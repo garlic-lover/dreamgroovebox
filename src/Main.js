@@ -103,12 +103,16 @@ class Main extends React.Component {
           decrement={async () => {
             await this.setState({ tempo: this.state.tempo - 5 });
             await this.sequencerStop();
-            await this.sequencerRun(this.state.tempo);
+            if (this.state.isPlaying === true) {
+              await this.sequencerRun(this.state.tempo);
+            }
           }}
           increment={async () => {
             await this.setState({ tempo: this.state.tempo + 5 });
             await this.sequencerStop();
-            await this.sequencerRun(this.state.tempo);
+            if (this.state.isPlaying === true) {
+              await this.sequencerRun(this.state.tempo);
+            }
           }}
           tempo={this.state.tempo}
         />
